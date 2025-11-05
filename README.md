@@ -1,6 +1,6 @@
 # AI-X-Deeplearning-project
 
-### Title: 제목을 입력하세요
+### Title: 태아 검사 데이터를 이용한 건강 상태 분류
 
 ### Members: 
           김서현, 전기공학전공, 
