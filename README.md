@@ -36,27 +36,27 @@
 
 본 프로젝트에서 사용할 Dataset은 다음과 같습니다. (출처: https://www.kaggle.com/datasets/andrewmvd/fetal-health-classification)
 
-| 피처명                    | 설명                                 | 예시                                            |
+| 피처명                    | 설명                                 | 범위                                          |
 |---------------------------|--------------------------------------|-------------------------------------------------|
-| Baseline value                  | 직원 ID                              | 1001, 1002, ...                                 |
-| Accelerations                   | 하루 평균 근무 시간                   | 8, 9, 10                                        |
-| Fetal_Movement                  | 근무 장소                            | Home(재택), Office(사무실), Hybrid(혼합)         |
-| Uterine_Contractions            | 업무 압박(강도)                      | High, Medium, Low                               |
-| Light_Decelerations             | 관리자 지원 수준                     | Excellent, Good, Poor                           |
-| Severe_Decelerations            | 수면 습관                            | Good, Average, Poor                             |
-| Prolonged_Decelerations         | 운동 습관                            | Regular, Occasionally, None                     |
-| Abnormal_Short_Term_Variability | 직무 만족도                          | High, Medium, Low                               |
-| Mean_Value_of_Short_Term_Variability| 워라밸(일과 삶의 균형)               | Yes(균형 유지), No(균형 미흡)                   |
-| Percentage_of_Time_With_Abnormal_Long_Term_Variability| 사교성 정도                          | Yes(활발), No(비활발)                           |
-| Mean_Value_of_Long_Term_Variability| 가족과 동거 여부                     | Yes(동거), No(미동거)                           |
-| Histogram_Width         | 근무/거주 지역(주 거주지)           | Delhi, Pune, Hyderabad, Karnataka 등            |
-| Histogram_Min                | 직원 ID                              | 1001, 1002, ...                                 |
-| Histogram_Max                 | 하루 평균 근무 시간                   | 8, 9, 10                                        |
-| Histogram_Number_of_Peaks               | 근무 장소                            | Home(재택), Office(사무실), Hybrid(혼합)         |
-| Histogram_Number_of_Zeros      | 업무 압박(강도)                      | High, Medium, Low                               |
-| Histogram_Mode           | 관리자 지원 수준                     | Excellent, Good, Poor                           |
-| Histogram_Mean          | 수면 습관                            | Good, Average, Poor                             |
-| Histogram_Median       | 운동 습관                            | Regular, Occasionally, None                     |
-| Histogram_Variance | 직무 만족도                          | High, Medium, Low                               |
-| Histogram_Tendancy       | 운동 습관                            | Regular, Occasionally, None                     |
-| Fetal_Health | 직무 만족도                          | High, Medium, Low                               |
+| Baseline_Value                  | 태아의 평균 심박수(bpm)          | 106 ~ 160                               |
+| Accelerations                   | 초당 심박수 증가 횟수                | 0.0 ~ 0.019                                   |
+| Fetal_Movement                  | 초당 태아 움직임 횟수                | 0.0 ~ 0.481       |
+| Uterine_Contractions            | 초당 자궁 수축 횟수             | 0.0 ~ 0.014                           |
+| Light_Decelerations             | 초당 가벼운 심박수 감소 횟수         | 0.0 ~ 0.015                           |
+| Severe_Decelerations            | 초당 심한 심박수 감소 횟수           | 0.0 ~ 0.001                            |
+| Prolonged_Decelerations         | 초당 장기적인 심박수 감소 횟수            | 0.0 ~ 0.005       |
+| Abnormal_Short_Term_Variability | 비정상적인 단기 심박 감소 횟수            | 12.0 ~ 87.0                        |
+| Mean_Value_of_Short_Term_Variability| 단기 심박 변동성의 평균값           | 0.2 ~ 7.0           |
+| Percentage_of_Time_With_Abnormal_Long_Term_Variability| 전체 시간 중 비정상 장기 심박 변동성이 나타나는 비율| 0.0 ~ 91.0      |
+| Mean_Value_of_Long_Term_Variability| 장기 심박 변동성의 평균값        | 0.0 ~ 50.7    |
+| Histogram_Width         | 단기 변동성 하스토그램의 구간 너비  | 3.0 ~ 180.0       |
+| Histogram_Min                | 단기 변동성 최솟값         | 50.0 ~ 159.0                        |
+| Histogram_Max                 | 단기 변동성 최댓값                  | 122.0 ~ 238.0                               |
+| Histogram_Number_of_Peaks               | 단기 변동성 히스토그램의 봉우리 개수           | 0.0 ~ 18.0        |
+| Histogram_Number_of_Zeros      | 단기 변동성 히스토그램에서 값이 0인 수         | 0.0 ~ 10.0             |
+| Histogram_Mode           | 히스토그램의 최빈값             | 60.0 ~ 187.0                     |
+| Histogram_Mean          | 히스토그램의 평균값               | 73.0 ~ 182.0                  |
+| Histogram_Median       | 히스토그램의 중앙값                    |77.0 ~ 186.0        |
+| Histogram_Variance | 히스토그램 값들의 분산              | 0.0 ~ 269.0                |
+| Histogram_Tendancy       | 히스토그램 값들의 전반적 경향성           | -1.0 ~ 1.0                |
+| Fetal_Health | 태아의 건강상태          | 1:정상, 2:의심, 3:병리적                  |
