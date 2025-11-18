@@ -18,7 +18,7 @@
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-## I. Proposal
+## I. Proposal (Option A)
 
 ### Motivation:
 
@@ -34,3 +34,29 @@
 
 ## II. Datasets
 
+본 프로젝트에서 사용할 Dataset은 다음과 같습니다. (출처: https://www.kaggle.com/datasets/andrewmvd/fetal-health-classification)
+
+| 피처명                    | 설명                                 | 예시                                            |
+|---------------------------|--------------------------------------|-------------------------------------------------|
+| Baseline value                  | 직원 ID                              | 1001, 1002, ...                                 |
+| Accelerations                   | 하루 평균 근무 시간                   | 8, 9, 10                                        |
+| Fetal_Movement                  | 근무 장소                            | Home(재택), Office(사무실), Hybrid(혼합)         |
+| Uterine_Contractions            | 업무 압박(강도)                      | High, Medium, Low                               |
+| Light_Decelerations             | 관리자 지원 수준                     | Excellent, Good, Poor                           |
+| Severe_Decelerations            | 수면 습관                            | Good, Average, Poor                             |
+| Prolonged_Decelerations         | 운동 습관                            | Regular, Occasionally, None                     |
+| Abnormal_Short_Term_Variability | 직무 만족도                          | High, Medium, Low                               |
+| Mean_Value_of_Short_Term_Variability| 워라밸(일과 삶의 균형)               | Yes(균형 유지), No(균형 미흡)                   |
+| Percentage_of_Time_With_Abnormal_Long_Term_Variability| 사교성 정도                          | Yes(활발), No(비활발)                           |
+| Mean_Value_of_Long_Term_Variability| 가족과 동거 여부                     | Yes(동거), No(미동거)                           |
+| Histogram_Width         | 근무/거주 지역(주 거주지)           | Delhi, Pune, Hyderabad, Karnataka 등            |
+| Histogram_Min                | 직원 ID                              | 1001, 1002, ...                                 |
+| Histogram_Max                 | 하루 평균 근무 시간                   | 8, 9, 10                                        |
+| Histogram_Number_of_Peaks               | 근무 장소                            | Home(재택), Office(사무실), Hybrid(혼합)         |
+| Histogram_Number_of_Zeros      | 업무 압박(강도)                      | High, Medium, Low                               |
+| Histogram_Mode           | 관리자 지원 수준                     | Excellent, Good, Poor                           |
+| Histogram_Mean          | 수면 습관                            | Good, Average, Poor                             |
+| Histogram_Median       | 운동 습관                            | Regular, Occasionally, None                     |
+| Histogram_Variance | 직무 만족도                          | High, Medium, Low                               |
+| Histogram_Tendancy       | 운동 습관                            | Regular, Occasionally, None                     |
+| Fetal_Health | 직무 만족도                          | High, Medium, Low                               |
