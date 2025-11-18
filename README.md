@@ -65,8 +65,7 @@
 
 ## III. Methodology
 
-### III.1 데이터 전처리 (Data Processing)
-
+## III.1 데이터 전처리 (Data Processing)<br><br>
 
 #### 1. 결측치 및 이상치 처리
 
@@ -81,7 +80,7 @@
 &nbsp;&nbsp;&nbsp;타깃 레이블인 Fetal_Health는 정상, 의심, 병리적 클래스 간의 분포가 불균형적일 가능성이 높습니다. 그러므로 이를 보정하기 위해 SMOTE (Synthetic Minority Over-Sampling Technique) 등의 오버샘플링 혹인 클래스 가중치를 부여하는 방식 등을 고려해 볼 수 있습니다.<br><br>
   
 
-### III.2 특성 탐색 및 탐색 (Feature Selection & Exploration)<br><br>
+## III.2 특성 탐색 및 탐색 (Feature Selection & Exploration)<br><br>
 
 
 #### 1. 상관관계 분석
@@ -97,7 +96,7 @@
 &nbsp;&nbsp;&nbsp;랜덤 포레스트, XGBoost 등 트리 기반 모델을 사용해 각 특성의 예측 기여도를 계산합니다. 그 후 중요 특성을 도출하여 이후 모델 설계에 반영합니다.<br><br>
 
 
-### III.3 모델 구조 설계 (Model Architecture)<br><br>
+## III.3 모델 구조 설계 (Model Architecture)<br><br>
 
 
 #### 1. 입력층
@@ -113,7 +112,7 @@
 &nbsp;&nbsp;&nbsp;3개의 클래스(정상, 의심, 병리적)에 대한 softmax 활성화를 통해 각 클래스에 대한 예측 확률을 제공합니다.<br><br>
 
 
-### III.4 학습 및 평가 방법 (Training & Evaluation)<br><br>
+## III.4 학습 및 평가 방법 (Training & Evaluation)<br><br>
 
 
 #### 1. 데이터 분할
@@ -133,7 +132,7 @@
 &nbsp;&nbsp;&nbsp;정확도(전체 예측의 정밀성), F1-score(클래스 불균형을 고려한 조화평균), Confusion Matrix(클래수별 오분류 분석) 등 다양한 지표로 모델의 성능을 종합적으로 평가합니다.<br><br>
 
 
-### III.5 결과 해석 및 신뢰성 확보 (Model Interpretation & Reliability)<br><br>
+## III.5 결과 해석 및 신뢰성 확보 (Model Interpretation & Reliability)<br><br>
 
 
 #### 1. 모델 해석
