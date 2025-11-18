@@ -81,7 +81,9 @@
   타깃 레이블인 Fetal_Health는 정상, 의심, 병리적 클래스 간의 분포가 불균형적일 가능성이 높습니다. 그러므로 이를 보정하기 위해 SMOTE (Synthetic Minority Over-Sampling Technique) 등의 오버샘플링 혹인 클래스 가중치를 부여하는 방식 등을 고려해 볼 수 있습니다.
   
 
+
 ### III.2 특성 탐색 및 탐색 (Feature Selection & Exploration)
+
 
 
 #### 1. 상관관계 분석
