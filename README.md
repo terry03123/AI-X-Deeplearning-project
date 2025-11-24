@@ -247,6 +247,8 @@ shap.summary_plot(shap_values, X)
 
 &nbsp;&nbsp;&nbsp;SHAP interaction plot(top 3 특성 간 상호작용)에서는 가속(accelerations) 축에서 상호작용 값의 퍼짐이 가장 크게 나타나, 가속이 다른 변수들과 결합될 때 예측에 추가적으로 큰 영향을 주는 특성임을 나타냅니다. 반면 baseline_value 및 fetal_movement는 단독 효과보다 가속 및 변동성 특성과 함께 나타날 때 예측 기여가 커지는 상호작용형 변수로 해석됩니다. 즉, 모델은 '가속이 어떤 baseline/운동성 조건에서 나타나는가?'를 중요한 패턴으로 학습하고 있다고 볼 수 있습니다.
 
+<img width="950" height="664" alt="image" src="https://github.com/terry03123/AI-X-Deeplearning-project/blob/main/Figure%203.png">
+
 ### 4. Confusion Matrix 기반 성능 해석
 
 &nbsp;&nbsp;&nbsp;Confusion matrix(행=실제, 열=예측)를 통해 클래스별 성능을 계산한 결과는 아래와 같습니다. (그래프 상 index 0,1,2는 각각 fetal_health의 1,2,3 클래스에 대응)
@@ -260,6 +262,8 @@ shap.summary_plot(shap_values, X)
 클래스 3(병적): Precision ≈ 92.3%, Recall ≈ 68.6% -> 병적군을 예측할 때 정밀도는 높으나, 실제 병적 표본을 정상/의심으로 낮춰 분류하는 경우가 상대적으로 존재.
 
 &nbsp;&nbsp;&nbsp;종합하면, 해당 모델은 정상군은 매우 잘 탐지하지만(높은 precision/recall), 의심, 병적과 같은 위험군의 재현율(recall)이 상대적으로 낮다는 것을 알 수 있습니다. 이는 데이터 불균형으로 인해 다수 클래스에 학습이 편향된 결과로 해석되며, 의료적 관점에서 중요한 위험군 누락(false negative)을 줄이기 위한 개선이 필요합니다.
+
+<img width="950" height="664" alt="image" src="https://github.com/terry03123/AI-X-Deeplearning-project/blob/main/Figure%204.png">
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
