@@ -268,9 +268,13 @@ shap.summary_plot(shap_values, X)
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ## 📌V. References
 
-자료 출처: <https://www.kaggle.com/datasets/andrewmvd/fetal-health-classification>
+자료 출처: 
 
-참고문헌: <https://www.sciencedirect.com/science/article/pii/S2472630324000888>
+<https://www.kaggle.com/datasets/andrewmvd/fetal-health-classification><br><br>
+
+참고문헌: 
+
+<https://www.sciencedirect.com/science/article/pii/S2472630324000888>
 
 <https://ieeexplore.ieee.org/document/9389902>
 
