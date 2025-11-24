@@ -63,7 +63,7 @@ class FetalHealthMLP(nn.Module):
 class FetalDataset(Dataset):
     def __init__(self, X, y):
         self.X = torch.tensor(X, dtype=torch.float32)
-        self.y = torch.tensor(y.values - 1, dtype=torch.long)  # class labeling 0부터 시작
+        self.y = torch.tensor(y.values - 1, dtype=torch.long) 
 
     def __len__(self):
         return len(self.X)
@@ -86,7 +86,6 @@ def train_model(model, train_loader, val_loader, epochs, optimizer, criterion):
             loss = criterion(outputs, labels)
             loss.backward()
             optimizer.step()
-        # 검증 절차 생략 가능 또는 추가로 구현
 
 # 9. 모델 학습
 input_dim = X.shape[1]
@@ -112,8 +111,9 @@ with torch.no_grad():
 print(classification_report(all_labels, all_preds))
 cm = confusion_matrix(all_labels, all_preds)
 plt.figure(figsize=(6, 5))
-sns.heatmap(cm, annot=True, fmt='d', cmap='Blues')  # 'Blues', 'YlGnBu', 'Oranges', 'plasma' 등 여러 팔레트 사용 가능
+sns.heatmap(cm, annot=True, fmt='d', cmap='Blues') 
 plt.title('Confusion Matrix')
 plt.ylabel('Actual')
 plt.xlabel('Predicted')
+
 plt.show()
