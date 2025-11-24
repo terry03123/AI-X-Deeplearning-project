@@ -269,7 +269,14 @@ shap.summary_plot(shap_values, X)
 ## 📌V. References
 
 자료 출처: <https://www.kaggle.com/datasets/andrewmvd/fetal-health-classification>
-참고문헌: 
+
+참고문헌: <https://www.sciencedirect.com/science/article/pii/S2472630324000888>
+
+<https://ieeexplore.ieee.org/document/9389902>
+
+<https://pmc.ncbi.nlm.nih.gov/articles/PMC12110323/>
+
+<https://pubs.aip.org/aip/acp/article-abstract/3291/1/030016/3348470/Fetal-health-prediction-using-machine-learning?redirectedFrom=fulltext>
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
