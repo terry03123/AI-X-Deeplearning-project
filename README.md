@@ -71,14 +71,29 @@
 
 &nbsp;&nbsp;&nbsp;먼저 dataset 내에서의 결측값을 점검합니다. 만약 결측값이 존재한다면 보간, 중앙값 대체 및 제거 등의 방법 중 상황에 맞는 방식을 적용합니다.
 
+```python
+print(df.info())
+print(df.describe())
+```
+
 ### 2. 정규화 및 표준화
 
 &nbsp;&nbsp;&nbsp;각 특성의 값 분포가 다르므로 학습 안정성과 효율성을 위한 스케일링이 필요합니다. 분포가 비정규가 명확한 경우 Min-Max 스케일링을 사용하여 값을 0~1 범위로 매핑하고, 평균이 0, 분산이 1이 되도록 표준화를 적용할 특성에는 StandardScaler를 사용합니다. 이 과정을 통해 딥러닝 모델의 수렴 속도를 높이고 학습 안정성을 향상시킬 수 있습니다.
+
+```python
+from sklearn.preprocessing import StandardScaler
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+```
 
 ### 3. 클래스 불균형 처리
 
 &nbsp;&nbsp;&nbsp;타깃 레이블인 Fetal_Health는 정상, 의심, 병리적 클래스 간의 분포가 불균형적일 가능성이 높습니다. 그러므로 이를 보정하기 위해 SMOTE (Synthetic Minority Over-Sampling Technique) 등의 오버샘플링 혹인 클래스 가중치를 부여하는 방식 등을 고려해 볼 수 있습니다.<br><br>
   
+```python
+sns.countplot(x='fetal_health', data=df)
+plt.show()
+```
 
 ## III-2. 특성 탐색 및 탐색 (Feature Selection & Exploration)<br><br>
 
@@ -95,6 +110,14 @@
 
 &nbsp;&nbsp;&nbsp;랜덤 포레스트, XGBoost 등 트리 기반 모델을 사용해 각 특성의 예측 기여도를 계산합니다. 그 후 중요 특성을 도출하여 이후 모델 설계에 반영합니다.<br><br>
 
+```python
+rf = RandomForestClassifier()
+rf.fit(X_scaled, y)
+importances = rf.feature_importances_
+sns.barplot(x=importances, y=X.columns)
+plt.title('Feature Importances')
+plt.show()
+```
 
 ## III-3. 모델 구조 설계 (Model Architecture)<br><br>
 
@@ -103,14 +126,42 @@
 
 &nbsp;&nbsp;&nbsp;21개의 정규화된 바이오 신호 특성을 벡터의 형태로 입력받습니다.
 
+```python
+input_dim = X.shape[1]
+```
+
 ### 2. 은닉층
 
 &nbsp;&nbsp;&nbsp;다중 퍼셉트론 구조를 사용하며 Batch Normalization 레이어를 배치하여 내부 공변량 변화를 완하하고 학습 안정성을 개선합니다. 또한 Dropout 레이어를 삽입하여 과적합을 줄입니다.
+
+```python
+class FetalHealthMLP(nn.Module):
+    def __init__(self, input_dim, hidden_dim, output_dim):
+        ...
+        self.fc1 = nn.Linear(input_dim, hidden_dim)
+        self.bn1 = nn.BatchNorm1d(hidden_dim)
+        self.dropout = nn.Dropout(0.3)
+```
 
 ### 3. 출력층
 
 &nbsp;&nbsp;&nbsp;3개의 클래스(정상, 의심, 병리적)에 대한 softmax 활성화를 통해 각 클래스에 대한 예측 확률을 제공합니다.<br><br>
 
+```python
+class FetalHealthMLP(nn.Module):
+    def __init__(self, input_dim, hidden_dim, output_dim):
+        super(FetalHealthMLP, self).__init__()
+        self.fc1 = nn.Linear(input_dim, hidden_dim)
+        self.bn1 = nn.BatchNorm1d(hidden_dim)
+        self.dropout = nn.Dropout(0.3)
+        self.fc2 = nn.Linear(hidden_dim, output_dim)
+
+    def forward(self, x):
+        x = torch.relu(self.bn1(self.fc1(x)))
+        x = self.dropout(x)
+        x = self.fc2(x)
+        return x
+```
 
 ## III-4. 학습 및 평가 방법 (Training & Evaluation)<br><br>
 
@@ -119,29 +170,61 @@
 
 &nbsp;&nbsp;&nbsp;학습, 검증용으로 데이터를 분할(8:2 비율)하여 모델의 일반화 성능을 평가합니다. 검증 세트를 통해 모델의 일반화 성능을 실시간으로 평가하고 과적합 여부를 확인합니다.
 
+```python
+X_train, X_val, y_train, y_val = train_test_split(
+    X_scaled, y, test_size=0.2, stratify=y, random_state=42)
+```
+
 ### 2. 손실 함수 및 최적화
 
 &nbsp;&nbsp;&nbsp;다중 함수 문제이므로 Cross-Entropy Loss를 사용합니다. 최적화에는 Adam Optimizer를 사용하여 학습 속도를 개선합니다.
+
+```python
+criterion = nn.CrossEntropyLoss()
+optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
+```
 
 ### 3.하이퍼파라미터 튜닝
 
 &nbsp;&nbsp;&nbsp;은닉층의 노드 수, 학습률 등 주요 하이퍼파라미터를 실험하며, 최적의 모델 구조를 찾아내기 위해 Grid Search 혹은 Optuna를 활용합니다.
 
+```python
+hidden_dim = 128
+```
+
 ### 4. 성능 평가 지표
 
 &nbsp;&nbsp;&nbsp;정확도(전체 예측의 정밀성), F1-score(클래스 불균형을 고려한 조화평균), Confusion Matrix(클래수별 오분류 분석) 등 다양한 지표로 모델의 성능을 종합적으로 평가합니다.<br><br>
 
+```python
+print(classification_report(all_labels, all_preds))
+cm = confusion_matrix(all_labels, all_preds)
+sns.heatmap(cm, annot=True, fmt='d', cmap='Blues')
+plt.show()
+```
 
 ## III-5. 결과 해석 및 신뢰성 확보 (Model Interpretation & Reliability)<br><br>
-
 
 ### 1. 모델 해석
 
 &nbsp;&nbsp;&nbsp;SHAP(각 특성이 예측에 얼마나 기여했는지 정밀하게 분석하는 방법), LIME(개별 예측에 대해 국소적 성명을 제공하여 실제 사례별 해석 가능성을 높이는 방법) 등 모델 해석 기법을 통해 실제로 예측에 큰 영향을 미친 특성을 분석합니다.
 
+```python
+explainer = shap.TreeExplainer(rf)
+shap_values = explainer.shap_values(X_scaled)
+shap.summary_plot(shap_values, X)
+```
+
 ### 2. 결과 시각화
 
 &nbsp;&nbsp;&nbsp;주요 특성의 분포, 예측 결과(혼동행렬, ROC 곡선 등)를 시각화합니다.
+
+```python
+sns.countplot(x='fetal_health', data=df)
+sns.barplot(x=importances, y=X.columns)
+sns.heatmap(cm, annot=True, fmt='d', cmap='Blues')
+shap.summary_plot(shap_values, X)
+```
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
