@@ -270,7 +270,7 @@ shap.summary_plot(shap_values, X)
 
 자료 출처: 
 
-<https://www.kaggle.com/datasets/andrewmvd/fetal-health-classification><br><br>
+[Fetal Health Classification](https://www.kaggle.com/datasets/andrewmvd/fetal-health-classification)<br><br>
 
 참고문헌: 
 
