@@ -147,20 +147,20 @@
 
 ## 📌IV. Results & Analysis
 
-#### 1. 데이터 분포 및 클래스 불균형
+### 1. 데이터 분포 및 클래스 불균형
 
 &nbsp;&nbsp;&nbsp;타깃 변수(fetal_health)의 클래스 분포를 확인한 결과, 정상 표본이 약 1,600개 이상으로 대부분을 차지하며, 의심 표본은 약 300개, 병적 표본은 200개 이하로 상대적으로 적게 존재합니다. 즉, 본 데이터셋은 강한 클래스 불균형(class imbalance) 구조를 가진다고 할 수 있습니다. 이러한 불균형은 모델이 정상 표본에 유리하게 학습되는 경향을 만들 수 있으며, 실제로 의심, 병적 표본과 같은 위험군 탐지 성능을 별도로 점검할 필요가 있습니다.
 
-#### 2. 중요 특성(Feature Importance) 해석
+### 2. 중요 특성(Feature Importance) 해석
 
 &nbsp;&nbsp;&nbsp;랜덤포레스트 기반 중요 특성 그래프에서 가장 높은 비중을 보인 특성들은 variability 계열(단기·장기 변동성 관련 지표)로 확인됩니다. 그 다음으로는 histogram_mean, histogram_mode, histogram_median 등 히스토그램 기반 심박 분포 요약 통계, 그리고 prolongued_decelerations(지속 감속), accelerations(가속), baseline_value(기저 심박) 순으로 중요도가 나타나는 것을 알 수 있습니다.
 따라서 해당 모델에서 태아 건강 상태를 구분할 때 가장 핵심적인 판별 신호는 심박 변동성(variability)이며, 심박 분포의 위치·형태를 요약하는 통계치와 가속/감속 수치가 그 다음 수준의 중요도를 지닌다고 해석할 수 있고, 이는 실제 CTG(태아심박검사)에서 변동성 저하와 비정상 감속 패턴이 병적 상태와 관련된다는 임상적 지식과도 부합합니다.
 
-#### 3. SHAP Interaction 해석
+### 3. SHAP Interaction 해석
 
 &nbsp;&nbsp;&nbsp;SHAP interaction plot(top 3 특성 간 상호작용)에서는 가속(accelerations) 축에서 상호작용 값의 퍼짐이 가장 크게 나타나, 가속이 다른 변수들과 결합될 때 예측에 추가적으로 큰 영향을 주는 특성임을 나타냅니다. 반면 baseline_value 및 fetal_movement는 단독 효과보다 가속 및 변동성 특성과 함께 나타날 때 예측 기여가 커지는 상호작용형 변수로 해석됩니다. 즉, 모델은 '가속이 어떤 baseline/운동성 조건에서 나타나는가?'를 중요한 패턴으로 학습하고 있다고 볼 수 있습니다.
 
-#### 4. Confusion Matrix 기반 성능 해석
+### 4. Confusion Matrix 기반 성능 해석
 
 &nbsp;&nbsp;&nbsp;Confusion matrix(행=실제, 열=예측)를 통해 클래스별 성능을 계산한 결과는 아래와 같습니다. (그래프 상 index 0,1,2는 각각 fetal_health의 1,2,3 클래스에 대응)
 
