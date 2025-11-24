@@ -241,6 +241,8 @@ shap.summary_plot(shap_values, X)
 &nbsp;&nbsp;&nbsp;랜덤포레스트 기반 중요 특성 그래프에서 가장 높은 비중을 보인 특성들은 variability 계열(단기·장기 변동성 관련 지표)로 확인됩니다. 그 다음으로는 histogram_mean, histogram_mode, histogram_median 등 히스토그램 기반 심박 분포 요약 통계, 그리고 prolongued_decelerations(지속 감속), accelerations(가속), baseline_value(기저 심박) 순으로 중요도가 나타나는 것을 알 수 있습니다.
 따라서 해당 모델에서 태아 건강 상태를 구분할 때 가장 핵심적인 판별 신호는 심박 변동성(variability)이며, 심박 분포의 위치·형태를 요약하는 통계치와 가속/감속 수치가 그 다음 수준의 중요도를 지닌다고 해석할 수 있고, 이는 실제 CTG(태아심박검사)에서 변동성 저하와 비정상 감속 패턴이 병적 상태와 관련된다는 임상적 지식과도 부합합니다.
 
+<img width="950" height="664" alt="image" src="https://github.com/terry03123/AI-X-Deeplearning-project/blob/main/Figure%202.png">
+
 ### 3. SHAP Interaction 해석
 
 &nbsp;&nbsp;&nbsp;SHAP interaction plot(top 3 특성 간 상호작용)에서는 가속(accelerations) 축에서 상호작용 값의 퍼짐이 가장 크게 나타나, 가속이 다른 변수들과 결합될 때 예측에 추가적으로 큰 영향을 주는 특성임을 나타냅니다. 반면 baseline_value 및 fetal_movement는 단독 효과보다 가속 및 변동성 특성과 함께 나타날 때 예측 기여가 커지는 상호작용형 변수로 해석됩니다. 즉, 모델은 '가속이 어떤 baseline/운동성 조건에서 나타나는가?'를 중요한 패턴으로 학습하고 있다고 볼 수 있습니다.
