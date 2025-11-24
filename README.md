@@ -234,6 +234,8 @@ shap.summary_plot(shap_values, X)
 
 &nbsp;&nbsp;&nbsp;타깃 변수(fetal_health)의 클래스 분포를 확인한 결과, 정상 표본이 약 1,600개 이상으로 대부분을 차지하며, 의심 표본은 약 300개, 병적 표본은 200개 이하로 상대적으로 적게 존재합니다. 즉, 본 데이터셋은 강한 클래스 불균형(class imbalance) 구조를 가진다고 할 수 있습니다. 이러한 불균형은 모델이 정상 표본에 유리하게 학습되는 경향을 만들 수 있으며, 실제로 의심, 병적 표본과 같은 위험군 탐지 성능을 별도로 점검할 필요가 있습니다.
 
+<img width="950" height="664" alt="image" src="https://github.com/terry03123/AI-X-Deeplearning-project/blob/244c84fba62c3936bd826e3cce0286cd111836c3/Figure%201.png">
+
 ### 2. 중요 특성(Feature Importance) 해석
 
 &nbsp;&nbsp;&nbsp;랜덤포레스트 기반 중요 특성 그래프에서 가장 높은 비중을 보인 특성들은 variability 계열(단기·장기 변동성 관련 지표)로 확인됩니다. 그 다음으로는 histogram_mean, histogram_mode, histogram_median 등 히스토그램 기반 심박 분포 요약 통계, 그리고 prolongued_decelerations(지속 감속), accelerations(가속), baseline_value(기저 심박) 순으로 중요도가 나타나는 것을 알 수 있습니다.
