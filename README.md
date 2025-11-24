@@ -276,11 +276,11 @@ shap.summary_plot(shap_values, X)
 
 [AI driven interpretable deep learning based fetal health classification](https://www.sciencedirect.com/science/article/pii/S2472630324000888)
 
-Fetal Health Classification Based on Machine Learning <https://ieeexplore.ieee.org/document/9389902>
+[Fetal Health Classification Based on Machine Learning](https://ieeexplore.ieee.org/document/9389902)
 
-Early Detection of Fetal Health Conditions Using Machine Learning for Classifying Imbalanced Cardiotocographic Data <https://pmc.ncbi.nlm.nih.gov/articles/PMC12110323/>
+[Early Detection of Fetal Health Conditions Using Machine Learning for Classifying Imbalanced Cardiotocographic Data](https://pmc.ncbi.nlm.nih.gov/articles/PMC12110323/)
 
-Fetal health prediction using machine learning <https://pubs.aip.org/aip/acp/article-abstract/3291/1/030016/3348470/Fetal-health-prediction-using-machine-learning?redirectedFrom=fulltext>
+[Fetal health prediction using machine learning](https://pubs.aip.org/aip/acp/article-abstract/3291/1/030016/3348470/Fetal-health-prediction-using-machine-learning?redirectedFrom=fulltext)
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
