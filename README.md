@@ -274,7 +274,7 @@ shap.summary_plot(shap_values, X)
 
 참고문헌: 
 
-AI driven interpretable deep learning based fetal health classification <https://www.sciencedirect.com/science/article/pii/S2472630324000888>
+[AI driven interpretable deep learning based fetal health classification](https://www.sciencedirect.com/science/article/pii/S2472630324000888)
 
 Fetal Health Classification Based on Machine Learning <https://ieeexplore.ieee.org/document/9389902>
 
